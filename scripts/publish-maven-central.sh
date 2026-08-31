@@ -121,7 +121,10 @@ export GPG_PRIVATE_KEY
   fail "the configured GPG private key was not found"
 
 printf '\nBuilding and testing %s:%s:%s...\n' "$CENTRAL_NAMESPACE" "owlvigil-java" "$version"
-./gradlew clean test jar sourcesJar javadocJar generatePomFileForMavenJavaPublication --no-daemon
+if ! ./gradlew clean test jar sourcesJar javadocJar generatePomFileForMavenJavaPublication \
+  signMavenJavaPublication --no-daemon; then
+  fail "local build or GPG signing failed; no artifacts were uploaded"
+fi
 
 printf '\nThis permanently publishes %s:owlvigil-java:%s to Maven Central.\n' \
   "$CENTRAL_NAMESPACE" "$version"
