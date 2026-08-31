@@ -268,7 +268,7 @@ OpenAI 按 artifact 声明运行时与生命周期，并要求 public API compat
 4. 打通 Gateway models/list、chat completion、embeddings，以及 SSE；同步/异步同时设计。
 5. 打通 Management workspace discovery、usage/log 等只读链路和 cursor pagination，再扩展写操作。
 6. 接入 generation drift、契约、跨 JDK、API compatibility、dependency verification CI。
-7. 发布 `0.1.0`，用真实 Java 应用验证 API 人体工学与连接/取消行为，再扩大 Management surface。
+7. 发布 `0.2.0`，用真实 Java 应用验证 API 人体工学与连接/取消行为，再扩大 Management surface。
 
 验收门槛不是“能发 HTTP 请求”，而是：示例可复制运行；sync/async/SSE 均可取消和关闭；凭证不泄露；重试遵守幂等性；未知服务端字段不破坏旧客户端；所有 artifact 在声明的 Java 下限上能被一个干净消费者加载和调用。
 

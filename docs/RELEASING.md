@@ -8,7 +8,7 @@
    and `CHANGELOG.md` in one pull request.
 3. Run `./gradlew clean test jar sourcesJar javadocJar` and review the POM.
 4. Merge the reviewed release commit and create the matching signed tag, for
-   example `v0.1.0`. The Release workflow uploads signed artifacts, transfers
+   example `v0.2.0`. The Release workflow uploads signed artifacts, transfers
    the same-IP staging repository to Central Portal, and requests automatic
    validation and release.
 5. Confirm the deployment succeeds in Central Portal, then verify dependency

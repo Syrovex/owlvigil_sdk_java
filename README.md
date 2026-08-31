@@ -6,17 +6,17 @@ focused Management API surface rather than every Dashboard operation.
 
 ## Installation
 
-After version 0.1.0 is published to Maven Central:
+After version 0.2.0 is published to Maven Central:
 
 ```kotlin
-implementation("com.owlvigil:owlvigil-java:0.1.0")
+implementation("com.owlvigil:owlvigil-java:0.2.0")
 ```
 
 ```xml
 <dependency>
   <groupId>com.owlvigil</groupId>
   <artifactId>owlvigil-java</artifactId>
-  <version>0.1.0</version>
+  <version>0.2.0</version>
 </dependency>
 ```
 

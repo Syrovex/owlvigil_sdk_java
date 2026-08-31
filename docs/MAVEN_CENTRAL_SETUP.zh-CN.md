@@ -74,9 +74,9 @@ GitHub Environment Secrets 页面，不要把填入真实值的清单保存或�
 - GPG 公钥已上传到公共密钥服务器，且可通过 Key ID 查询。
 - `main` 分支的 CI 和 Security 工作流全部通过。
 - `build.gradle.kts`、README 和 `CHANGELOG.md` 的版本一致。
-- 发布者已明确批准不可覆盖的目标版本，例如 `0.1.0`。
+- 发布者已明确批准不可覆盖的目标版本，例如 `0.2.0`。
 
-完成配置后，由维护者创建并推送签名的注释 Tag（例如 `v0.1.0`）。
+完成配置后，由维护者创建并推送签名的注释 Tag（例如 `v0.2.0`）。
 Tag 会触发 `.github/workflows/release.yml`，自动构建、签名、上传并请求
 Maven Central 发布。不要通过普通分支 Push 测试正式发布流程。
 
