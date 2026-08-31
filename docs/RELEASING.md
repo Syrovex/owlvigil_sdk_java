@@ -16,8 +16,9 @@
 
 For an authorized local release, run `./scripts/publish-maven-central.sh` from
 a clean `main` checkout. On macOS, it stores credentials in the login Keychain
-after the first secure prompt and requires an explicit version confirmation
-before uploading. Use `--forget-credentials` to remove the stored values.
+after the first secure prompt and requires an explicit publication confirmation
+before uploading. Type lowercase `yes` only after checking the displayed
+coordinates and version. Use `--forget-credentials` to remove the stored values.
 
 Never place publishing credentials or private signing keys in the repository.
 Repository administrators can follow the Chinese

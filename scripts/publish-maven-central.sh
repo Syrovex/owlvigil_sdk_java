@@ -125,9 +125,10 @@ printf '\nBuilding and testing %s:%s:%s...\n' "$CENTRAL_NAMESPACE" "owlvigil-jav
 
 printf '\nThis permanently publishes %s:owlvigil-java:%s to Maven Central.\n' \
   "$CENTRAL_NAMESPACE" "$version"
-printf 'Type "publish %s" to continue: ' "$version"
+printf 'Type "yes" to continue: '
 IFS= read -r confirmation
-[[ "$confirmation" == "publish $version" ]] || fail "publication cancelled"
+confirmation="${confirmation%$'\r'}"
+[[ "$confirmation" == "yes" ]] || fail "publication cancelled"
 
 ./gradlew publishMavenJavaPublicationToMavenCentralRepository --no-daemon
 
