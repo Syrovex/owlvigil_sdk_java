@@ -14,6 +14,14 @@
 5. Confirm the deployment succeeds in Central Portal, then verify dependency
    resolution from Maven Central before marking the GitHub release complete.
 
+For an authorized local release, run `./scripts/publish-maven-central.sh` from
+a clean `main` checkout. It prompts for credentials without echoing them and
+requires an explicit version confirmation before uploading.
+
 Never place publishing credentials or private signing keys in the repository.
+Repository administrators can follow the Chinese
+[Maven Central configuration guide](MAVEN_CENTRAL_SETUP.zh-CN.md) to configure
+the required GitHub environment and secrets without storing their values in
+the repository.
 The compatibility upload and same-IP transfer follow Sonatype's
 [OSSRH Staging API service documentation](https://central.sonatype.org/publish/publish-portal-ossrh-staging-api/).
