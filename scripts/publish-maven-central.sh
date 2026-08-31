@@ -8,7 +8,18 @@ cleanup() {
   unset MAVEN_CENTRAL_USERNAME MAVEN_CENTRAL_PASSWORD
   unset GPG_PRIVATE_KEY GPG_PRIVATE_KEY_PASSWORD central_auth
 }
-trap cleanup EXIT INT TERM
+
+handle_signal() {
+  local exit_code="$1"
+  trap - EXIT INT TERM
+  cleanup
+  printf '\nPublication cancelled.\n' >&2
+  exit "$exit_code"
+}
+
+trap cleanup EXIT
+trap 'handle_signal 130' INT
+trap 'handle_signal 143' TERM
 
 fail() {
   printf 'error: %s\n' "$*" >&2
@@ -61,4 +72,3 @@ curl --fail-with-body --silent --show-error --request POST \
   "https://ossrh-staging-api.central.sonatype.com/manual/upload/defaultRepository/${CENTRAL_NAMESPACE}?publishing_type=automatic"
 
 printf '\nUpload transferred to Central Portal for automatic validation and release.\n'
-
