@@ -6,6 +6,16 @@ minor releases may include announced breaking changes.
 
 ## [Unreleased]
 
+### Added
+
+- 144 typed Management operations and generated request/response models from the standalone public Swagger contract, retaining the original three convenience methods.
+- Canonical member-status and support-issue enums.
+- Complete local contract coverage and a repeatable Python generator. Webhook live testing remains deferred.
+
+### Fixed
+
+- `ApiResponse` construction for HTTP 204 responses (`value()` is now `null` instead of throwing).
+
 ## [0.2.0] - 2026-08-28
 
 ### Added

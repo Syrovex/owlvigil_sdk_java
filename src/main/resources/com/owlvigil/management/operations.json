@@ -1,0 +1,1979 @@
+[
+  {
+    "method": "GET",
+    "path": "/v1/billing/auto-charge",
+    "javaMethod": "getBillingAutoCharge",
+    "responseType": "BillingAutoCharge",
+    "arguments": [
+      {
+        "type": "GetBillingAutoChargeQuery",
+        "name": "query"
+      }
+    ]
+  },
+  {
+    "method": "PUT",
+    "path": "/v1/billing/auto-charge",
+    "javaMethod": "putBillingAutoCharge",
+    "responseType": "BillingAutoCharge",
+    "arguments": [
+      {
+        "type": "BillingUpdateAutoChargeRequest",
+        "name": "body"
+      }
+    ]
+  },
+  {
+    "method": "POST",
+    "path": "/v1/billing/auto-charge/retry",
+    "javaMethod": "postBillingAutoChargeRetry",
+    "responseType": "BillingAutoCharge",
+    "arguments": [
+      {
+        "type": "BillingRetryAutoChargeRequest",
+        "name": "body"
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/v1/billing/balance",
+    "javaMethod": "getBillingBalance",
+    "responseType": "BillingBalance",
+    "arguments": [
+      {
+        "type": "GetBillingBalanceQuery",
+        "name": "query"
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/v1/billing/invoices",
+    "javaMethod": "getBillingInvoices",
+    "responseType": "BillingInvoiceList",
+    "arguments": [
+      {
+        "type": "GetBillingInvoicesQuery",
+        "name": "query"
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/v1/billing/invoices/{invoice_id}",
+    "javaMethod": "getBillingInvoicesInvoiceId",
+    "responseType": "BillingInvoice",
+    "arguments": [
+      {
+        "type": "String",
+        "name": "invoiceId"
+      },
+      {
+        "type": "GetBillingInvoicesInvoiceIdQuery",
+        "name": "query"
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/v1/billing/orders",
+    "javaMethod": "getBillingOrders",
+    "responseType": "BillingOrderList",
+    "arguments": [
+      {
+        "type": "GetBillingOrdersQuery",
+        "name": "query"
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/v1/billing/orders/{order_id}",
+    "javaMethod": "getBillingOrdersOrderId",
+    "responseType": "BillingOrder",
+    "arguments": [
+      {
+        "type": "String",
+        "name": "orderId"
+      }
+    ]
+  },
+  {
+    "method": "POST",
+    "path": "/v1/billing/orders/{order_id}/confirm-stripe-session",
+    "javaMethod": "postBillingOrdersOrderIdConfirmStripeSession",
+    "responseType": "BillingCheckoutConfirmation",
+    "arguments": [
+      {
+        "type": "String",
+        "name": "orderId"
+      },
+      {
+        "type": "PostBillingOrdersOrderIdConfirmStripeSessionQuery",
+        "name": "query"
+      },
+      {
+        "type": "BillingConfirmStripeSessionRequest",
+        "name": "body"
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/v1/billing/overview",
+    "javaMethod": "getBillingOverview",
+    "responseType": "BillingOverview",
+    "arguments": [
+      {
+        "type": "GetBillingOverviewQuery",
+        "name": "query"
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/v1/billing/payment-methods",
+    "javaMethod": "getBillingPaymentMethods",
+    "responseType": "BillingPaymentMethodList",
+    "arguments": [
+      {
+        "type": "GetBillingPaymentMethodsQuery",
+        "name": "query"
+      }
+    ]
+  },
+  {
+    "method": "POST",
+    "path": "/v1/billing/payment-methods",
+    "javaMethod": "postBillingPaymentMethods",
+    "responseType": "BillingPaymentMethod",
+    "arguments": [
+      {
+        "type": "BillingSavePaymentMethodRequest",
+        "name": "body"
+      }
+    ]
+  },
+  {
+    "method": "POST",
+    "path": "/v1/billing/payment-methods/setup-intent",
+    "javaMethod": "postBillingPaymentMethodsSetupIntent",
+    "responseType": "BillingSetupIntent",
+    "arguments": [
+      {
+        "type": "BillingSetupIntentRequest",
+        "name": "body"
+      }
+    ]
+  },
+  {
+    "method": "DELETE",
+    "path": "/v1/billing/payment-methods/{payment_method_id}",
+    "javaMethod": "deleteBillingPaymentMethodsPaymentMethodId",
+    "responseType": "CommonDeleted",
+    "arguments": [
+      {
+        "type": "String",
+        "name": "paymentMethodId"
+      }
+    ]
+  },
+  {
+    "method": "PUT",
+    "path": "/v1/billing/payment-methods/{payment_method_id}/default",
+    "javaMethod": "putBillingPaymentMethodsPaymentMethodIdDefault",
+    "responseType": "BillingPaymentMethod",
+    "arguments": [
+      {
+        "type": "String",
+        "name": "paymentMethodId"
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/v1/billing/plans",
+    "javaMethod": "getBillingPlans",
+    "responseType": "BillingPlanList",
+    "arguments": []
+  },
+  {
+    "method": "GET",
+    "path": "/v1/billing/plans/{plan_id}",
+    "javaMethod": "getBillingPlansPlanId",
+    "responseType": "BillingPlan",
+    "arguments": [
+      {
+        "type": "String",
+        "name": "planId"
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/v1/billing/subscription",
+    "javaMethod": "getBillingSubscription",
+    "responseType": "BillingSubscription",
+    "arguments": []
+  },
+  {
+    "method": "POST",
+    "path": "/v1/billing/subscription/cancel",
+    "javaMethod": "postBillingSubscriptionCancel",
+    "responseType": "BillingSubscription",
+    "arguments": [
+      {
+        "type": "BillingCancelSubscriptionRequest",
+        "name": "body"
+      }
+    ]
+  },
+  {
+    "method": "POST",
+    "path": "/v1/billing/subscription/checkout",
+    "javaMethod": "postBillingSubscriptionCheckout",
+    "responseType": "BillingSubscriptionCheckout",
+    "arguments": [
+      {
+        "type": "BillingSubscriptionCheckoutRequest",
+        "name": "body"
+      }
+    ]
+  },
+  {
+    "method": "POST",
+    "path": "/v1/billing/subscription/checkout-sessions/sync-latest",
+    "javaMethod": "postBillingSubscriptionCheckoutSessionsSyncLatest",
+    "responseType": "BillingSubscriptionCheckout",
+    "arguments": []
+  },
+  {
+    "method": "GET",
+    "path": "/v1/billing/subscription/checkout-sessions/{session_id}",
+    "javaMethod": "getBillingSubscriptionCheckoutSessionsSessionId",
+    "responseType": "BillingSubscriptionCheckout",
+    "arguments": [
+      {
+        "type": "String",
+        "name": "sessionId"
+      }
+    ]
+  },
+  {
+    "method": "POST",
+    "path": "/v1/billing/subscription/downgrade",
+    "javaMethod": "postBillingSubscriptionDowngrade",
+    "responseType": "BillingSubscription",
+    "arguments": [
+      {
+        "type": "BillingChangeSubscriptionRequest",
+        "name": "body"
+      }
+    ]
+  },
+  {
+    "method": "POST",
+    "path": "/v1/billing/subscription/in-app",
+    "javaMethod": "postBillingSubscriptionInApp",
+    "responseType": "BillingSubscriptionInApp",
+    "arguments": [
+      {
+        "type": "BillingSubscriptionInAppRequest",
+        "name": "body"
+      }
+    ]
+  },
+  {
+    "method": "POST",
+    "path": "/v1/billing/subscription/in-app/confirm",
+    "javaMethod": "postBillingSubscriptionInAppConfirm",
+    "responseType": "BillingSubscription",
+    "arguments": [
+      {
+        "type": "BillingConfirmSubscriptionRequest",
+        "name": "body"
+      }
+    ]
+  },
+  {
+    "method": "POST",
+    "path": "/v1/billing/subscription/reactivate",
+    "javaMethod": "postBillingSubscriptionReactivate",
+    "responseType": "BillingSubscription",
+    "arguments": []
+  },
+  {
+    "method": "POST",
+    "path": "/v1/billing/subscription/upgrade",
+    "javaMethod": "postBillingSubscriptionUpgrade",
+    "responseType": "BillingSubscription",
+    "arguments": [
+      {
+        "type": "BillingChangeSubscriptionRequest",
+        "name": "body"
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/v1/billing/topup-plans",
+    "javaMethod": "getBillingTopupPlans",
+    "responseType": "BillingTopupPlanList",
+    "arguments": []
+  },
+  {
+    "method": "GET",
+    "path": "/v1/billing/topups",
+    "javaMethod": "getBillingTopups",
+    "responseType": "BillingOrderList",
+    "arguments": [
+      {
+        "type": "GetBillingTopupsQuery",
+        "name": "query"
+      }
+    ]
+  },
+  {
+    "method": "POST",
+    "path": "/v1/billing/topups/checkout",
+    "javaMethod": "postBillingTopupsCheckout",
+    "responseType": "BillingCheckout",
+    "arguments": [
+      {
+        "type": "BillingTopupCheckoutRequest",
+        "name": "body"
+      }
+    ]
+  },
+  {
+    "method": "POST",
+    "path": "/v1/billing/topups/in-app",
+    "javaMethod": "postBillingTopupsInApp",
+    "responseType": "BillingInAppPayment",
+    "arguments": [
+      {
+        "type": "BillingTopupInAppRequest",
+        "name": "body"
+      }
+    ]
+  },
+  {
+    "method": "POST",
+    "path": "/v1/billing/topups/in-app/confirm",
+    "javaMethod": "postBillingTopupsInAppConfirm",
+    "responseType": "BillingOrder",
+    "arguments": [
+      {
+        "type": "BillingConfirmTopupRequest",
+        "name": "body"
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/v1/billing/topups/{topup_id}",
+    "javaMethod": "getBillingTopupsTopupId",
+    "responseType": "BillingOrder",
+    "arguments": [
+      {
+        "type": "String",
+        "name": "topupId"
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/v1/gateway/keys",
+    "javaMethod": "getGatewayKeys",
+    "responseType": "GatewaykeyDTOList",
+    "arguments": [
+      {
+        "type": "GetGatewayKeysQuery",
+        "name": "query"
+      }
+    ]
+  },
+  {
+    "method": "POST",
+    "path": "/v1/gateway/keys",
+    "javaMethod": "postGatewayKeys",
+    "responseType": "GatewaykeyDTO",
+    "arguments": [
+      {
+        "type": "GatewaykeyCreateRequest",
+        "name": "body"
+      }
+    ]
+  },
+  {
+    "method": "DELETE",
+    "path": "/v1/gateway/keys/{key_id}",
+    "javaMethod": "deleteGatewayKeysKeyId",
+    "responseType": "CommonDeleted",
+    "arguments": [
+      {
+        "type": "Long",
+        "name": "keyId"
+      },
+      {
+        "type": "DeleteGatewayKeysKeyIdQuery",
+        "name": "query"
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/v1/gateway/keys/{key_id}",
+    "javaMethod": "getGatewayKeysKeyId",
+    "responseType": "GatewaykeyDTO",
+    "arguments": [
+      {
+        "type": "Long",
+        "name": "keyId"
+      },
+      {
+        "type": "GetGatewayKeysKeyIdQuery",
+        "name": "query"
+      }
+    ]
+  },
+  {
+    "method": "PATCH",
+    "path": "/v1/gateway/keys/{key_id}",
+    "javaMethod": "patchGatewayKeysKeyId",
+    "responseType": "GatewaykeyDTO",
+    "arguments": [
+      {
+        "type": "Long",
+        "name": "keyId"
+      },
+      {
+        "type": "PatchGatewayKeysKeyIdQuery",
+        "name": "query"
+      },
+      {
+        "type": "GatewaykeyUpdateRequest",
+        "name": "body"
+      }
+    ]
+  },
+  {
+    "method": "POST",
+    "path": "/v1/gateway/keys/{key_id}/disable",
+    "javaMethod": "postGatewayKeysKeyIdDisable",
+    "responseType": "GatewaykeyDTO",
+    "arguments": [
+      {
+        "type": "Long",
+        "name": "keyId"
+      },
+      {
+        "type": "PostGatewayKeysKeyIdDisableQuery",
+        "name": "query"
+      }
+    ]
+  },
+  {
+    "method": "POST",
+    "path": "/v1/gateway/keys/{key_id}/enable",
+    "javaMethod": "postGatewayKeysKeyIdEnable",
+    "responseType": "GatewaykeyDTO",
+    "arguments": [
+      {
+        "type": "Long",
+        "name": "keyId"
+      },
+      {
+        "type": "PostGatewayKeysKeyIdEnableQuery",
+        "name": "query"
+      }
+    ]
+  },
+  {
+    "method": "POST",
+    "path": "/v1/gateway/keys/{key_id}/rotate",
+    "javaMethod": "postGatewayKeysKeyIdRotate",
+    "responseType": "GatewaykeyDTO",
+    "arguments": [
+      {
+        "type": "Long",
+        "name": "keyId"
+      },
+      {
+        "type": "PostGatewayKeysKeyIdRotateQuery",
+        "name": "query"
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/v1/gateway/models",
+    "javaMethod": "getGatewayModels",
+    "responseType": "CatalogModelList",
+    "arguments": [
+      {
+        "type": "GetGatewayModelsQuery",
+        "name": "query"
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/v1/gateway/models/{model_id}",
+    "javaMethod": "getGatewayModelsModelId",
+    "responseType": "CatalogModelDetail",
+    "arguments": [
+      {
+        "type": "String",
+        "name": "modelId"
+      },
+      {
+        "type": "GetGatewayModelsModelIdQuery",
+        "name": "query"
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/v1/gateway/payload-logs",
+    "javaMethod": "getGatewayPayloadLogs",
+    "responseType": "LogsPayloadSummaryList",
+    "arguments": [
+      {
+        "type": "GetGatewayPayloadLogsQuery",
+        "name": "query"
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/v1/gateway/payload-logs/access",
+    "javaMethod": "getGatewayPayloadLogsAccess",
+    "responseType": "LogsPayloadAccess",
+    "arguments": [
+      {
+        "type": "GetGatewayPayloadLogsAccessQuery",
+        "name": "query"
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/v1/gateway/payload-logs/{payload_id}",
+    "javaMethod": "getGatewayPayloadLogsPayloadId",
+    "responseType": "LogsPayload",
+    "arguments": [
+      {
+        "type": "Long",
+        "name": "payloadId"
+      },
+      {
+        "type": "GetGatewayPayloadLogsPayloadIdQuery",
+        "name": "query"
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/v1/gateway/policies",
+    "javaMethod": "getGatewayPolicies",
+    "responseType": "PolicyDTO",
+    "arguments": [
+      {
+        "type": "GetGatewayPoliciesQuery",
+        "name": "query"
+      }
+    ]
+  },
+  {
+    "method": "POST",
+    "path": "/v1/gateway/policies/keywords",
+    "javaMethod": "postGatewayPoliciesKeywords",
+    "responseType": "PolicyDTO",
+    "arguments": [
+      {
+        "type": "PolicyAddKeywordRequest",
+        "name": "body"
+      }
+    ]
+  },
+  {
+    "method": "DELETE",
+    "path": "/v1/gateway/policies/keywords/{keyword_id}",
+    "javaMethod": "deleteGatewayPoliciesKeywordsKeywordId",
+    "responseType": "PolicyDTO",
+    "arguments": [
+      {
+        "type": "Long",
+        "name": "keywordId"
+      },
+      {
+        "type": "DeleteGatewayPoliciesKeywordsKeywordIdQuery",
+        "name": "query"
+      }
+    ]
+  },
+  {
+    "method": "POST",
+    "path": "/v1/gateway/policies/preview",
+    "javaMethod": "postGatewayPoliciesPreview",
+    "responseType": "PolicyPreview",
+    "arguments": [
+      {
+        "type": "PolicyPreviewRequest",
+        "name": "body"
+      }
+    ]
+  },
+  {
+    "method": "PATCH",
+    "path": "/v1/gateway/policies/{policy_id}",
+    "javaMethod": "patchGatewayPoliciesPolicyId",
+    "responseType": "PolicyModelPolicy",
+    "arguments": [
+      {
+        "type": "Long",
+        "name": "policyId"
+      },
+      {
+        "type": "PatchGatewayPoliciesPolicyIdQuery",
+        "name": "query"
+      },
+      {
+        "type": "PolicyUpdateRequest",
+        "name": "body"
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/v1/gateway/providers",
+    "javaMethod": "getGatewayProviders",
+    "responseType": "ProviderDTOList",
+    "arguments": [
+      {
+        "type": "GetGatewayProvidersQuery",
+        "name": "query"
+      }
+    ]
+  },
+  {
+    "method": "POST",
+    "path": "/v1/gateway/providers",
+    "javaMethod": "postGatewayProviders",
+    "responseType": "ProviderDTO",
+    "arguments": [
+      {
+        "type": "ProviderCreateRequest",
+        "name": "body"
+      }
+    ]
+  },
+  {
+    "method": "POST",
+    "path": "/v1/gateway/providers/verify-connection",
+    "javaMethod": "postGatewayProvidersVerifyConnection",
+    "responseType": "ProviderVerification",
+    "arguments": [
+      {
+        "type": "ProviderVerifyRequest",
+        "name": "body"
+      }
+    ]
+  },
+  {
+    "method": "DELETE",
+    "path": "/v1/gateway/providers/{provider_id}",
+    "javaMethod": "deleteGatewayProvidersProviderId",
+    "responseType": "CommonDeleted",
+    "arguments": [
+      {
+        "type": "Long",
+        "name": "providerId"
+      },
+      {
+        "type": "DeleteGatewayProvidersProviderIdQuery",
+        "name": "query"
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/v1/gateway/providers/{provider_id}",
+    "javaMethod": "getGatewayProvidersProviderId",
+    "responseType": "ProviderDTO",
+    "arguments": [
+      {
+        "type": "Long",
+        "name": "providerId"
+      },
+      {
+        "type": "GetGatewayProvidersProviderIdQuery",
+        "name": "query"
+      }
+    ]
+  },
+  {
+    "method": "PATCH",
+    "path": "/v1/gateway/providers/{provider_id}",
+    "javaMethod": "patchGatewayProvidersProviderId",
+    "responseType": "ProviderDTO",
+    "arguments": [
+      {
+        "type": "Long",
+        "name": "providerId"
+      },
+      {
+        "type": "PatchGatewayProvidersProviderIdQuery",
+        "name": "query"
+      },
+      {
+        "type": "ProviderUpdateRequest",
+        "name": "body"
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/v1/gateway/quota",
+    "javaMethod": "getGatewayQuota",
+    "responseType": "UsageQuota",
+    "arguments": [
+      {
+        "type": "GetGatewayQuotaQuery",
+        "name": "query"
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/v1/gateway/request-logs",
+    "javaMethod": "getGatewayRequestLogs",
+    "responseType": "ObservabilityRequestLogList",
+    "arguments": [
+      {
+        "type": "GetGatewayRequestLogsQuery",
+        "name": "query"
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/v1/gateway/request-logs/{request_id}",
+    "javaMethod": "getGatewayRequestLogsRequestId",
+    "responseType": "ObservabilityRequestLog",
+    "arguments": [
+      {
+        "type": "String",
+        "name": "requestId"
+      },
+      {
+        "type": "GetGatewayRequestLogsRequestIdQuery",
+        "name": "query"
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/v1/gateway/routes",
+    "javaMethod": "getGatewayRoutes",
+    "responseType": "CatalogRouteCandidateList",
+    "arguments": [
+      {
+        "type": "GetGatewayRoutesQuery",
+        "name": "query"
+      }
+    ]
+  },
+  {
+    "method": "POST",
+    "path": "/v1/gateway/routes/preview",
+    "javaMethod": "postGatewayRoutesPreview",
+    "responseType": "CatalogPreview",
+    "arguments": [
+      {
+        "type": "CatalogPreviewRequest",
+        "name": "body"
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/v1/gateway/routes/{route_id}",
+    "javaMethod": "getGatewayRoutesRouteId",
+    "responseType": "CatalogRouteCandidate",
+    "arguments": [
+      {
+        "type": "Long",
+        "name": "routeId"
+      },
+      {
+        "type": "GetGatewayRoutesRouteIdQuery",
+        "name": "query"
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/v1/gateway/traces",
+    "javaMethod": "getGatewayTraces",
+    "responseType": "ObservabilityTraceList",
+    "arguments": [
+      {
+        "type": "GetGatewayTracesQuery",
+        "name": "query"
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/v1/gateway/traces/{trace_id}",
+    "javaMethod": "getGatewayTracesTraceId",
+    "responseType": "ObservabilityTrace",
+    "arguments": [
+      {
+        "type": "String",
+        "name": "traceId"
+      },
+      {
+        "type": "GetGatewayTracesTraceIdQuery",
+        "name": "query"
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/v1/gateway/usage",
+    "javaMethod": "getGatewayUsage",
+    "responseType": "UsageRecordList",
+    "arguments": [
+      {
+        "type": "GetGatewayUsageQuery",
+        "name": "query"
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/v1/gateway/usage/summary",
+    "javaMethod": "getGatewayUsageSummary",
+    "responseType": "UsageSummary",
+    "arguments": [
+      {
+        "type": "GetGatewayUsageSummaryQuery",
+        "name": "query"
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/v1/user/notification-preferences",
+    "javaMethod": "getUserNotificationPreferences",
+    "responseType": "AccountNotificationPreferences",
+    "arguments": []
+  },
+  {
+    "method": "PUT",
+    "path": "/v1/user/notification-preferences",
+    "javaMethod": "putUserNotificationPreferences",
+    "responseType": "AccountNotificationPreferences",
+    "arguments": [
+      {
+        "type": "AccountNotificationPreferences",
+        "name": "body"
+      }
+    ]
+  },
+  {
+    "method": "PUT",
+    "path": "/v1/user/password",
+    "javaMethod": "putUserPassword",
+    "responseType": "AccountMessage",
+    "arguments": [
+      {
+        "type": "AccountChangePasswordRequest",
+        "name": "body"
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/v1/user/profile",
+    "javaMethod": "getUserProfile",
+    "responseType": "AccountProfile",
+    "arguments": []
+  },
+  {
+    "method": "PUT",
+    "path": "/v1/user/profile",
+    "javaMethod": "putUserProfile",
+    "responseType": "AccountProfile",
+    "arguments": [
+      {
+        "type": "AccountUpdateProfileRequest",
+        "name": "body"
+      }
+    ]
+  },
+  {
+    "method": "POST",
+    "path": "/v1/user/support-requests",
+    "javaMethod": "postUserSupportRequests",
+    "responseType": "AccountMessage",
+    "arguments": [
+      {
+        "type": "AccountSupportRequest",
+        "name": "body"
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/v1/users/me/invitation-stats",
+    "javaMethod": "getUsersMeInvitationStats",
+    "responseType": "AccountInvitationStats",
+    "arguments": []
+  },
+  {
+    "method": "GET",
+    "path": "/v1/users/me/invitations",
+    "javaMethod": "getUsersMeInvitations",
+    "responseType": "GetUsersMeInvitationsResponse",
+    "arguments": []
+  },
+  {
+    "method": "GET",
+    "path": "/v1/users/me/invite-link",
+    "javaMethod": "getUsersMeInviteLink",
+    "responseType": "AccountInvitationStats",
+    "arguments": []
+  },
+  {
+    "method": "POST",
+    "path": "/v1/users/me/send-invitation",
+    "javaMethod": "postUsersMeSendInvitation",
+    "responseType": "AccountInvitationSent",
+    "arguments": [
+      {
+        "type": "AccountSendInvitationRequest",
+        "name": "body"
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/v1/webhook-endpoints",
+    "javaMethod": "getWebhookEndpoints",
+    "responseType": "WebhookEndpointList",
+    "arguments": [
+      {
+        "type": "GetWebhookEndpointsQuery",
+        "name": "query"
+      }
+    ]
+  },
+  {
+    "method": "POST",
+    "path": "/v1/webhook-endpoints",
+    "javaMethod": "postWebhookEndpoints",
+    "responseType": "WebhookEndpoint",
+    "arguments": [
+      {
+        "type": "WebhookCreateEndpointRequest",
+        "name": "body"
+      }
+    ]
+  },
+  {
+    "method": "DELETE",
+    "path": "/v1/webhook-endpoints/{endpoint_id}",
+    "javaMethod": "deleteWebhookEndpointsEndpointId",
+    "responseType": "CommonDeleted",
+    "arguments": [
+      {
+        "type": "Long",
+        "name": "endpointId"
+      },
+      {
+        "type": "DeleteWebhookEndpointsEndpointIdQuery",
+        "name": "query"
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/v1/webhook-endpoints/{endpoint_id}",
+    "javaMethod": "getWebhookEndpointsEndpointId",
+    "responseType": "WebhookEndpoint",
+    "arguments": [
+      {
+        "type": "Long",
+        "name": "endpointId"
+      },
+      {
+        "type": "GetWebhookEndpointsEndpointIdQuery",
+        "name": "query"
+      }
+    ]
+  },
+  {
+    "method": "PATCH",
+    "path": "/v1/webhook-endpoints/{endpoint_id}",
+    "javaMethod": "patchWebhookEndpointsEndpointId",
+    "responseType": "WebhookEndpoint",
+    "arguments": [
+      {
+        "type": "Long",
+        "name": "endpointId"
+      },
+      {
+        "type": "PatchWebhookEndpointsEndpointIdQuery",
+        "name": "query"
+      },
+      {
+        "type": "WebhookUpdateEndpointRequest",
+        "name": "body"
+      }
+    ]
+  },
+  {
+    "method": "POST",
+    "path": "/v1/webhook-endpoints/{endpoint_id}/disable",
+    "javaMethod": "postWebhookEndpointsEndpointIdDisable",
+    "responseType": "WebhookEndpoint",
+    "arguments": [
+      {
+        "type": "Long",
+        "name": "endpointId"
+      },
+      {
+        "type": "PostWebhookEndpointsEndpointIdDisableQuery",
+        "name": "query"
+      }
+    ]
+  },
+  {
+    "method": "POST",
+    "path": "/v1/webhook-endpoints/{endpoint_id}/enable",
+    "javaMethod": "postWebhookEndpointsEndpointIdEnable",
+    "responseType": "WebhookEndpoint",
+    "arguments": [
+      {
+        "type": "Long",
+        "name": "endpointId"
+      },
+      {
+        "type": "PostWebhookEndpointsEndpointIdEnableQuery",
+        "name": "query"
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/v1/webhook-endpoints/{endpoint_id}/events",
+    "javaMethod": "getWebhookEndpointsEndpointIdEvents",
+    "responseType": "WebhookEventList",
+    "arguments": [
+      {
+        "type": "Long",
+        "name": "endpointId"
+      },
+      {
+        "type": "GetWebhookEndpointsEndpointIdEventsQuery",
+        "name": "query"
+      }
+    ]
+  },
+  {
+    "method": "POST",
+    "path": "/v1/webhook-endpoints/{endpoint_id}/rotate-secret",
+    "javaMethod": "postWebhookEndpointsEndpointIdRotateSecret",
+    "responseType": "WebhookEndpoint",
+    "arguments": [
+      {
+        "type": "Long",
+        "name": "endpointId"
+      },
+      {
+        "type": "PostWebhookEndpointsEndpointIdRotateSecretQuery",
+        "name": "query"
+      }
+    ]
+  },
+  {
+    "method": "POST",
+    "path": "/v1/webhook-endpoints/{endpoint_id}/test",
+    "javaMethod": "postWebhookEndpointsEndpointIdTest",
+    "responseType": "WebhookEvent",
+    "arguments": [
+      {
+        "type": "Long",
+        "name": "endpointId"
+      },
+      {
+        "type": "PostWebhookEndpointsEndpointIdTestQuery",
+        "name": "query"
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/v1/webhook-event-types",
+    "javaMethod": "getWebhookEventTypes",
+    "responseType": "WebhookEventTypeList",
+    "arguments": []
+  },
+  {
+    "method": "GET",
+    "path": "/v1/webhook-events",
+    "javaMethod": "getWebhookEvents",
+    "responseType": "WebhookEventList",
+    "arguments": [
+      {
+        "type": "GetWebhookEventsQuery",
+        "name": "query"
+      }
+    ]
+  },
+  {
+    "method": "POST",
+    "path": "/v1/webhook-events/bulk-redeliver",
+    "javaMethod": "postWebhookEventsBulkRedeliver",
+    "responseType": "WebhookEventList",
+    "arguments": [
+      {
+        "type": "WebhookBulkRedeliverRequest",
+        "name": "body"
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/v1/webhook-events/{event_id}",
+    "javaMethod": "getWebhookEventsEventId",
+    "responseType": "WebhookEvent",
+    "arguments": [
+      {
+        "type": "Long",
+        "name": "eventId"
+      },
+      {
+        "type": "GetWebhookEventsEventIdQuery",
+        "name": "query"
+      }
+    ]
+  },
+  {
+    "method": "POST",
+    "path": "/v1/webhook-events/{event_id}/redeliver",
+    "javaMethod": "postWebhookEventsEventIdRedeliver",
+    "responseType": "WebhookEvent",
+    "arguments": [
+      {
+        "type": "Long",
+        "name": "eventId"
+      },
+      {
+        "type": "PostWebhookEventsEventIdRedeliverQuery",
+        "name": "query"
+      }
+    ]
+  },
+  {
+    "method": "POST",
+    "path": "/v1/webhook-events/{event_id}/retry",
+    "javaMethod": "postWebhookEventsEventIdRetry",
+    "responseType": "WebhookEvent",
+    "arguments": [
+      {
+        "type": "Long",
+        "name": "eventId"
+      },
+      {
+        "type": "PostWebhookEventsEventIdRetryQuery",
+        "name": "query"
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/v1/workspaces",
+    "javaMethod": "getWorkspaces",
+    "responseType": "WorkspaceDTOList",
+    "arguments": [
+      {
+        "type": "GetWorkspacesQuery",
+        "name": "query"
+      }
+    ]
+  },
+  {
+    "method": "POST",
+    "path": "/v1/workspaces",
+    "javaMethod": "postWorkspaces",
+    "responseType": "WorkspaceDTO",
+    "arguments": [
+      {
+        "type": "WorkspaceCreateRequest",
+        "name": "body"
+      }
+    ]
+  },
+  {
+    "method": "DELETE",
+    "path": "/v1/workspaces/{workspace_id}",
+    "javaMethod": "deleteWorkspacesWorkspaceId",
+    "responseType": "Void",
+    "arguments": [
+      {
+        "type": "Long",
+        "name": "workspaceId"
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/v1/workspaces/{workspace_id}",
+    "javaMethod": "getWorkspacesWorkspaceId",
+    "responseType": "WorkspaceDTO",
+    "arguments": [
+      {
+        "type": "Long",
+        "name": "workspaceId"
+      }
+    ]
+  },
+  {
+    "method": "PATCH",
+    "path": "/v1/workspaces/{workspace_id}",
+    "javaMethod": "patchWorkspacesWorkspaceId",
+    "responseType": "WorkspaceDTO",
+    "arguments": [
+      {
+        "type": "Long",
+        "name": "workspaceId"
+      },
+      {
+        "type": "WorkspaceUpdateRequest",
+        "name": "body"
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/v1/workspaces/{workspace_id}/activity",
+    "javaMethod": "getWorkspacesWorkspaceIdActivity",
+    "responseType": "GetWorkspacesWorkspaceIdActivityResponse",
+    "arguments": [
+      {
+        "type": "Long",
+        "name": "workspaceId"
+      },
+      {
+        "type": "GetWorkspacesWorkspaceIdActivityQuery",
+        "name": "query"
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/v1/workspaces/{workspace_id}/audit-logs",
+    "javaMethod": "getWorkspacesWorkspaceIdAuditLogs",
+    "responseType": "LogsAuditLogList",
+    "arguments": [
+      {
+        "type": "Long",
+        "name": "workspaceId"
+      },
+      {
+        "type": "GetWorkspacesWorkspaceIdAuditLogsQuery",
+        "name": "query"
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/v1/workspaces/{workspace_id}/audit-logs/{audit_log_id}",
+    "javaMethod": "getWorkspacesWorkspaceIdAuditLogsAuditLogId",
+    "responseType": "LogsAuditLog",
+    "arguments": [
+      {
+        "type": "Long",
+        "name": "workspaceId"
+      },
+      {
+        "type": "Long",
+        "name": "auditLogId"
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/v1/workspaces/{workspace_id}/billing-details",
+    "javaMethod": "getWorkspacesWorkspaceIdBillingDetails",
+    "responseType": "BillingDetails",
+    "arguments": [
+      {
+        "type": "Long",
+        "name": "workspaceId"
+      }
+    ]
+  },
+  {
+    "method": "PUT",
+    "path": "/v1/workspaces/{workspace_id}/billing-details",
+    "javaMethod": "putWorkspacesWorkspaceIdBillingDetails",
+    "responseType": "BillingDetails",
+    "arguments": [
+      {
+        "type": "Long",
+        "name": "workspaceId"
+      },
+      {
+        "type": "BillingUpdateDetailsRequest",
+        "name": "body"
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/v1/workspaces/{workspace_id}/governance/financial",
+    "javaMethod": "getWorkspacesWorkspaceIdGovernanceFinancial",
+    "responseType": "FinancialGovernance",
+    "arguments": [
+      {
+        "type": "Long",
+        "name": "workspaceId"
+      }
+    ]
+  },
+  {
+    "method": "PUT",
+    "path": "/v1/workspaces/{workspace_id}/governance/financial",
+    "javaMethod": "putWorkspacesWorkspaceIdGovernanceFinancial",
+    "responseType": "FinancialGovernance",
+    "arguments": [
+      {
+        "type": "Long",
+        "name": "workspaceId"
+      },
+      {
+        "type": "FinancialUpdateGovernanceRequest",
+        "name": "body"
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/v1/workspaces/{workspace_id}/governance/financial/budget-caps",
+    "javaMethod": "getWorkspacesWorkspaceIdGovernanceFinancialBudgetCaps",
+    "responseType": "FinancialGovernance",
+    "arguments": [
+      {
+        "type": "Long",
+        "name": "workspaceId"
+      }
+    ]
+  },
+  {
+    "method": "PUT",
+    "path": "/v1/workspaces/{workspace_id}/governance/financial/budget-caps",
+    "javaMethod": "putWorkspacesWorkspaceIdGovernanceFinancialBudgetCaps",
+    "responseType": "FinancialGovernance",
+    "arguments": [
+      {
+        "type": "Long",
+        "name": "workspaceId"
+      },
+      {
+        "type": "FinancialUpdateBudgetCapsRequest",
+        "name": "body"
+      }
+    ]
+  },
+  {
+    "method": "PATCH",
+    "path": "/v1/workspaces/{workspace_id}/governance/financial/budget-caps/{scope_type}/{scope_id}",
+    "javaMethod": "patchWorkspacesWorkspaceIdGovernanceFinancialBudgetCapsScopeTypeScopeId",
+    "responseType": "FinancialBudgetCap",
+    "arguments": [
+      {
+        "type": "Long",
+        "name": "workspaceId"
+      },
+      {
+        "type": "String",
+        "name": "scopeType"
+      },
+      {
+        "type": "Long",
+        "name": "scopeId"
+      },
+      {
+        "type": "FinancialUpdateScopeBudgetCapRequest",
+        "name": "body"
+      }
+    ]
+  },
+  {
+    "method": "POST",
+    "path": "/v1/workspaces/{workspace_id}/governance/financial/preview",
+    "javaMethod": "postWorkspacesWorkspaceIdGovernanceFinancialPreview",
+    "responseType": "FinancialPreview",
+    "arguments": [
+      {
+        "type": "Long",
+        "name": "workspaceId"
+      },
+      {
+        "type": "FinancialPreviewRequest",
+        "name": "body"
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/v1/workspaces/{workspace_id}/governance/financial/spend-summary",
+    "javaMethod": "getWorkspacesWorkspaceIdGovernanceFinancialSpendSummary",
+    "responseType": "FinancialSpendSummary",
+    "arguments": [
+      {
+        "type": "Long",
+        "name": "workspaceId"
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/v1/workspaces/{workspace_id}/governance/financial/spending-limits",
+    "javaMethod": "getWorkspacesWorkspaceIdGovernanceFinancialSpendingLimits",
+    "responseType": "FinancialMemberSpendingLimitList",
+    "arguments": [
+      {
+        "type": "Long",
+        "name": "workspaceId"
+      },
+      {
+        "type": "GetWorkspacesWorkspaceIdGovernanceFinancialSpendingLimitsQuery",
+        "name": "query"
+      }
+    ]
+  },
+  {
+    "method": "PUT",
+    "path": "/v1/workspaces/{workspace_id}/governance/financial/spending-limits",
+    "javaMethod": "putWorkspacesWorkspaceIdGovernanceFinancialSpendingLimits",
+    "responseType": "FinancialMemberSpendingLimitList",
+    "arguments": [
+      {
+        "type": "Long",
+        "name": "workspaceId"
+      },
+      {
+        "type": "FinancialUpdateSpendingLimitsRequest",
+        "name": "body"
+      }
+    ]
+  },
+  {
+    "method": "PATCH",
+    "path": "/v1/workspaces/{workspace_id}/governance/financial/spending-limits/users/{user_id}",
+    "javaMethod": "patchWorkspacesWorkspaceIdGovernanceFinancialSpendingLimitsUsersUserId",
+    "responseType": "FinancialMemberSpendingLimit",
+    "arguments": [
+      {
+        "type": "Long",
+        "name": "workspaceId"
+      },
+      {
+        "type": "Long",
+        "name": "userId"
+      },
+      {
+        "type": "FinancialUpdateUserSpendingLimitRequest",
+        "name": "body"
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/v1/workspaces/{workspace_id}/governance/financial/thresholds",
+    "javaMethod": "getWorkspacesWorkspaceIdGovernanceFinancialThresholds",
+    "responseType": "FinancialThresholds",
+    "arguments": [
+      {
+        "type": "Long",
+        "name": "workspaceId"
+      }
+    ]
+  },
+  {
+    "method": "PUT",
+    "path": "/v1/workspaces/{workspace_id}/governance/financial/thresholds",
+    "javaMethod": "putWorkspacesWorkspaceIdGovernanceFinancialThresholds",
+    "responseType": "FinancialThresholds",
+    "arguments": [
+      {
+        "type": "Long",
+        "name": "workspaceId"
+      },
+      {
+        "type": "FinancialUpdateThresholdsRequest",
+        "name": "body"
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/v1/workspaces/{workspace_id}/invitations",
+    "javaMethod": "getWorkspacesWorkspaceIdInvitations",
+    "responseType": "AccessInvitationList",
+    "arguments": [
+      {
+        "type": "Long",
+        "name": "workspaceId"
+      }
+    ]
+  },
+  {
+    "method": "POST",
+    "path": "/v1/workspaces/{workspace_id}/invitations",
+    "javaMethod": "postWorkspacesWorkspaceIdInvitations",
+    "responseType": "AccessInvitation",
+    "arguments": [
+      {
+        "type": "Long",
+        "name": "workspaceId"
+      },
+      {
+        "type": "AccessCreateInvitationRequest",
+        "name": "body"
+      }
+    ]
+  },
+  {
+    "method": "POST",
+    "path": "/v1/workspaces/{workspace_id}/invitations/{invitation_id}/resend",
+    "javaMethod": "postWorkspacesWorkspaceIdInvitationsInvitationIdResend",
+    "responseType": "AccessInvitation",
+    "arguments": [
+      {
+        "type": "Long",
+        "name": "workspaceId"
+      },
+      {
+        "type": "Long",
+        "name": "invitationId"
+      }
+    ]
+  },
+  {
+    "method": "POST",
+    "path": "/v1/workspaces/{workspace_id}/invitations/{invitation_id}/revoke",
+    "javaMethod": "postWorkspacesWorkspaceIdInvitationsInvitationIdRevoke",
+    "responseType": "AccessInvitation",
+    "arguments": [
+      {
+        "type": "Long",
+        "name": "workspaceId"
+      },
+      {
+        "type": "Long",
+        "name": "invitationId"
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/v1/workspaces/{workspace_id}/logging-settings",
+    "javaMethod": "getWorkspacesWorkspaceIdLoggingSettings",
+    "responseType": "LogsLoggingSettings",
+    "arguments": [
+      {
+        "type": "Long",
+        "name": "workspaceId"
+      }
+    ]
+  },
+  {
+    "method": "PUT",
+    "path": "/v1/workspaces/{workspace_id}/logging-settings",
+    "javaMethod": "putWorkspacesWorkspaceIdLoggingSettings",
+    "responseType": "LogsLoggingSettings",
+    "arguments": [
+      {
+        "type": "Long",
+        "name": "workspaceId"
+      },
+      {
+        "type": "LogsUpdateLoggingSettingsRequest",
+        "name": "body"
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/v1/workspaces/{workspace_id}/members",
+    "javaMethod": "getWorkspacesWorkspaceIdMembers",
+    "responseType": "AccessMemberList",
+    "arguments": [
+      {
+        "type": "Long",
+        "name": "workspaceId"
+      },
+      {
+        "type": "GetWorkspacesWorkspaceIdMembersQuery",
+        "name": "query"
+      }
+    ]
+  },
+  {
+    "method": "POST",
+    "path": "/v1/workspaces/{workspace_id}/members",
+    "javaMethod": "postWorkspacesWorkspaceIdMembers",
+    "responseType": "AccessMember",
+    "arguments": [
+      {
+        "type": "Long",
+        "name": "workspaceId"
+      },
+      {
+        "type": "AccessInviteMemberRequest",
+        "name": "body"
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/v1/workspaces/{workspace_id}/members/role-options",
+    "javaMethod": "getWorkspacesWorkspaceIdMembersRoleOptions",
+    "responseType": "AccessRoleOptions",
+    "arguments": [
+      {
+        "type": "Long",
+        "name": "workspaceId"
+      }
+    ]
+  },
+  {
+    "method": "DELETE",
+    "path": "/v1/workspaces/{workspace_id}/members/{member_id}",
+    "javaMethod": "deleteWorkspacesWorkspaceIdMembersMemberId",
+    "responseType": "CommonDeleted",
+    "arguments": [
+      {
+        "type": "Long",
+        "name": "workspaceId"
+      },
+      {
+        "type": "Long",
+        "name": "memberId"
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/v1/workspaces/{workspace_id}/members/{member_id}",
+    "javaMethod": "getWorkspacesWorkspaceIdMembersMemberId",
+    "responseType": "AccessMember",
+    "arguments": [
+      {
+        "type": "Long",
+        "name": "workspaceId"
+      },
+      {
+        "type": "Long",
+        "name": "memberId"
+      }
+    ]
+  },
+  {
+    "method": "PATCH",
+    "path": "/v1/workspaces/{workspace_id}/members/{member_id}",
+    "javaMethod": "patchWorkspacesWorkspaceIdMembersMemberId",
+    "responseType": "AccessMember",
+    "arguments": [
+      {
+        "type": "Long",
+        "name": "workspaceId"
+      },
+      {
+        "type": "Long",
+        "name": "memberId"
+      },
+      {
+        "type": "AccessUpdateMemberRequest",
+        "name": "body"
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/v1/workspaces/{workspace_id}/members/{member_id}/permissions",
+    "javaMethod": "getWorkspacesWorkspaceIdMembersMemberIdPermissions",
+    "responseType": "AccessMemberPermissions",
+    "arguments": [
+      {
+        "type": "Long",
+        "name": "workspaceId"
+      },
+      {
+        "type": "Long",
+        "name": "memberId"
+      }
+    ]
+  },
+  {
+    "method": "PUT",
+    "path": "/v1/workspaces/{workspace_id}/members/{member_id}/permissions",
+    "javaMethod": "putWorkspacesWorkspaceIdMembersMemberIdPermissions",
+    "responseType": "AccessMemberPermissions",
+    "arguments": [
+      {
+        "type": "Long",
+        "name": "workspaceId"
+      },
+      {
+        "type": "Long",
+        "name": "memberId"
+      },
+      {
+        "type": "AccessUpdatePermissionsRequest",
+        "name": "body"
+      }
+    ]
+  },
+  {
+    "method": "POST",
+    "path": "/v1/workspaces/{workspace_id}/members/{member_id}/permissions/reset",
+    "javaMethod": "postWorkspacesWorkspaceIdMembersMemberIdPermissionsReset",
+    "responseType": "AccessMemberPermissions",
+    "arguments": [
+      {
+        "type": "Long",
+        "name": "workspaceId"
+      },
+      {
+        "type": "Long",
+        "name": "memberId"
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/v1/workspaces/{workspace_id}/overview",
+    "javaMethod": "getWorkspacesWorkspaceIdOverview",
+    "responseType": "WorkspaceOverview",
+    "arguments": [
+      {
+        "type": "Long",
+        "name": "workspaceId"
+      },
+      {
+        "type": "GetWorkspacesWorkspaceIdOverviewQuery",
+        "name": "query"
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/v1/workspaces/{workspace_id}/permissions",
+    "javaMethod": "getWorkspacesWorkspaceIdPermissions",
+    "responseType": "AccessPermissionGroups",
+    "arguments": [
+      {
+        "type": "Long",
+        "name": "workspaceId"
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/v1/workspaces/{workspace_id}/quota-summary",
+    "javaMethod": "getWorkspacesWorkspaceIdQuotaSummary",
+    "responseType": "WorkspaceQuotaSummary",
+    "arguments": [
+      {
+        "type": "Long",
+        "name": "workspaceId"
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/v1/workspaces/{workspace_id}/quota-usage",
+    "javaMethod": "getWorkspacesWorkspaceIdQuotaUsage",
+    "responseType": "WorkspaceQuotaUsage",
+    "arguments": [
+      {
+        "type": "Long",
+        "name": "workspaceId"
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/v1/workspaces/{workspace_id}/roles",
+    "javaMethod": "getWorkspacesWorkspaceIdRoles",
+    "responseType": "AccessRoleList",
+    "arguments": [
+      {
+        "type": "Long",
+        "name": "workspaceId"
+      }
+    ]
+  },
+  {
+    "method": "POST",
+    "path": "/v1/workspaces/{workspace_id}/roles",
+    "javaMethod": "postWorkspacesWorkspaceIdRoles",
+    "responseType": "AccessRole",
+    "arguments": [
+      {
+        "type": "Long",
+        "name": "workspaceId"
+      },
+      {
+        "type": "AccessCreateRoleRequest",
+        "name": "body"
+      }
+    ]
+  },
+  {
+    "method": "DELETE",
+    "path": "/v1/workspaces/{workspace_id}/roles/{role_id}",
+    "javaMethod": "deleteWorkspacesWorkspaceIdRolesRoleId",
+    "responseType": "CommonDeleted",
+    "arguments": [
+      {
+        "type": "Long",
+        "name": "workspaceId"
+      },
+      {
+        "type": "Long",
+        "name": "roleId"
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/v1/workspaces/{workspace_id}/roles/{role_id}",
+    "javaMethod": "getWorkspacesWorkspaceIdRolesRoleId",
+    "responseType": "AccessRole",
+    "arguments": [
+      {
+        "type": "Long",
+        "name": "workspaceId"
+      },
+      {
+        "type": "Long",
+        "name": "roleId"
+      }
+    ]
+  },
+  {
+    "method": "PATCH",
+    "path": "/v1/workspaces/{workspace_id}/roles/{role_id}",
+    "javaMethod": "patchWorkspacesWorkspaceIdRolesRoleId",
+    "responseType": "AccessRole",
+    "arguments": [
+      {
+        "type": "Long",
+        "name": "workspaceId"
+      },
+      {
+        "type": "Long",
+        "name": "roleId"
+      },
+      {
+        "type": "AccessUpdateRoleRequest",
+        "name": "body"
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/v1/workspaces/{workspace_id}/teams",
+    "javaMethod": "getWorkspacesWorkspaceIdTeams",
+    "responseType": "AccessTeamList",
+    "arguments": [
+      {
+        "type": "Long",
+        "name": "workspaceId"
+      },
+      {
+        "type": "GetWorkspacesWorkspaceIdTeamsQuery",
+        "name": "query"
+      }
+    ]
+  },
+  {
+    "method": "POST",
+    "path": "/v1/workspaces/{workspace_id}/teams",
+    "javaMethod": "postWorkspacesWorkspaceIdTeams",
+    "responseType": "AccessTeam",
+    "arguments": [
+      {
+        "type": "Long",
+        "name": "workspaceId"
+      },
+      {
+        "type": "AccessCreateTeamRequest",
+        "name": "body"
+      }
+    ]
+  },
+  {
+    "method": "DELETE",
+    "path": "/v1/workspaces/{workspace_id}/teams/{team_id}",
+    "javaMethod": "deleteWorkspacesWorkspaceIdTeamsTeamId",
+    "responseType": "CommonDeleted",
+    "arguments": [
+      {
+        "type": "Long",
+        "name": "workspaceId"
+      },
+      {
+        "type": "Long",
+        "name": "teamId"
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "path": "/v1/workspaces/{workspace_id}/teams/{team_id}",
+    "javaMethod": "getWorkspacesWorkspaceIdTeamsTeamId",
+    "responseType": "AccessTeam",
+    "arguments": [
+      {
+        "type": "Long",
+        "name": "workspaceId"
+      },
+      {
+        "type": "Long",
+        "name": "teamId"
+      }
+    ]
+  },
+  {
+    "method": "PATCH",
+    "path": "/v1/workspaces/{workspace_id}/teams/{team_id}",
+    "javaMethod": "patchWorkspacesWorkspaceIdTeamsTeamId",
+    "responseType": "AccessTeam",
+    "arguments": [
+      {
+        "type": "Long",
+        "name": "workspaceId"
+      },
+      {
+        "type": "Long",
+        "name": "teamId"
+      },
+      {
+        "type": "AccessUpdateTeamRequest",
+        "name": "body"
+      }
+    ]
+  }
+]

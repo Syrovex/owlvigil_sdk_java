@@ -10,6 +10,8 @@ import com.owlvigil.gateway.Message;
 import java.time.Duration;
 import okhttp3.mockwebserver.MockResponse;
 import okhttp3.mockwebserver.MockWebServer;
+import okhttp3.OkHttpClient;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 
 final class OwlVigilClientTest {
@@ -74,6 +76,38 @@ final class OwlVigilClientTest {
         assertThatThrownBy(() -> RequestOptions.builder().header("AuThOrIzAtIoN", "Bearer wrong"))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("managed by the SDK");
+    }
+
+    @Test
+    void builderCoversEveryConfigurationOptionAndValidationBranch() throws Exception {
+        assertThatThrownBy(() -> OwlVigilClient.builder().gatewayKeyProvider(null)).isInstanceOf(NullPointerException.class);
+        assertThatThrownBy(() -> OwlVigilClient.builder().apiKeyProvider(null)).isInstanceOf(NullPointerException.class);
+        assertThatThrownBy(() -> OwlVigilClient.builder().gatewayBaseUrl(null)).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> OwlVigilClient.builder().managementBaseUrl(" ")).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> OwlVigilClient.builder().oauthBaseUrl("")).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> OwlVigilClient.builder().timeout(null)).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> OwlVigilClient.builder().timeout(Duration.ofSeconds(-1))).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> OwlVigilClient.builder().userAgent(" ")).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> OwlVigilClient.builder().objectMapper(null)).isInstanceOf(NullPointerException.class);
+        assertThatThrownBy(() -> OwlVigilClient.builder().httpClient(null)).isInstanceOf(NullPointerException.class);
+        try (MockWebServer server = new MockWebServer()) {
+            server.enqueue(new MockResponse().setBody("{\"object\":\"list\",\"data\":[]}"));
+            OkHttpClient http = new OkHttpClient();
+            try (OwlVigilClient client = OwlVigilClient.builder()
+                    .gatewayKeyProvider(() -> "provider-key").apiKeyProvider(() -> "api-key")
+                    .gatewayBaseUrl(server.url("/").toString()).managementBaseUrl(server.url("/").toString())
+                    .oauthBaseUrl(server.url("/").toString()).timeout(Duration.ofSeconds(2)).maxRetries(0)
+                    .userAgent("custom-agent").objectMapper(new ObjectMapper()).httpClient(http).build()) {
+                client.gateway().listModels();
+            }
+            assertThat(server.takeRequest().getHeader("User-Agent")).isEqualTo("custom-agent");
+            assertThat(http.dispatcher().executorService().isShutdown()).isFalse();
+            http.dispatcher().executorService().shutdown();
+            http.connectionPool().evictAll();
+        }
+        try (OwlVigilClient client = OwlVigilClient.builder().gatewayKey(" ").build()) {
+            assertThatThrownBy(() -> client.gateway().listModels()).isInstanceOf(IllegalStateException.class);
+        }
     }
 
     @Test

@@ -4,10 +4,11 @@ plugins {
     `java-library`
     `maven-publish`
     signing
+    jacoco
 }
 
 group = "com.owlvigil"
-version = providers.gradleProperty("version").getOrElse("0.2.0")
+version = providers.gradleProperty("version").getOrElse("0.3.0-SNAPSHOT")
 
 repositories {
     mavenCentral()
@@ -44,6 +45,40 @@ dependencies {
 tasks.test {
     useJUnitPlatform()
     systemProperty("owlvigil.project.version", project.version.toString())
+    finalizedBy(tasks.jacocoTestReport)
+}
+
+tasks.jacocoTestReport {
+    dependsOn(tasks.test)
+    reports {
+        xml.required.set(true)
+        html.required.set(true)
+    }
+}
+
+tasks.jacocoTestCoverageVerification {
+    dependsOn(tasks.test)
+    classDirectories.setFrom(files(classDirectories.files.map {
+        fileTree(it) {
+            exclude("com/owlvigil/internal/**")
+        }
+    }))
+    violationRules {
+        rule {
+            limit {
+                counter = "LINE"
+                minimum = "0.95".toBigDecimal()
+            }
+            limit {
+                counter = "BRANCH"
+                minimum = "0.85".toBigDecimal()
+            }
+        }
+    }
+}
+
+tasks.check {
+    dependsOn(tasks.jacocoTestCoverageVerification)
 }
 
 publishing {

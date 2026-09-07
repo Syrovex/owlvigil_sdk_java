@@ -7,10 +7,11 @@ import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.Objects;
 
-public final class ManagementClient {
+public final class ManagementClient extends GeneratedManagementClient {
     private final HttpTransport transport;
 
     public ManagementClient(HttpTransport transport) {
+        super(transport);
         this.transport = Objects.requireNonNull(transport, "transport");
     }
 
