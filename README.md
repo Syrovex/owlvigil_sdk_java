@@ -4,26 +4,18 @@
 [![Maven Central](https://img.shields.io/maven-central/v/com.owlvigil/owlvigil-java)](https://central.sonatype.com/artifact/com.owlvigil/owlvigil-java)
 [![License: MIT](https://img.shields.io/github/license/Syrovex/owlvigil_sdk_java)](LICENSE)
 
-Java 11+ client for the OwlVigil AI Gateway, Management API, OAuth2, and
-webhook signature verification.
+Java 11+ SDK for OwlVigil Gateway model calls, Management API workflows,
+OAuth2, and Webhook signature verification.
 
-Version `0.2.0` is published on Maven Central. The development version
-`0.3.0-SNAPSHOT` on `main` adds typed methods and models for all 144
-operations in the standalone public Management contract; these additions are
-not included in the published `0.2.0` artifact. See
-[CHANGELOG.md](CHANGELOG.md) for details.
+Documentation: [English](docs/en-US/README.md) | [简体中文](docs/zh-CN/README.md)
 
-## Features
+Gateway model calls use `https://gateway.owlvigil.com` with a Gateway Key.
+Management calls use `https://api.owlvigil.com/v1` with a scoped Management
+API Key. These credentials are not interchangeable.
 
-- Gateway models, Chat Completions, Responses, Embeddings, and Anthropic Messages
-- SSE streaming for Chat Completions and Responses
-- Workspace listing, usage summary, and request-log lookup
-- OAuth2 authorization and token flows
-- Webhook HMAC signing and verification
+## Install
 
-## Installation
-
-Add the published `0.2.0` package from Maven Central:
+Add the published package from Maven Central:
 
 ```kotlin
 implementation("com.owlvigil:owlvigil-java:0.2.0")
@@ -37,10 +29,17 @@ implementation("com.owlvigil:owlvigil-java:0.2.0")
 </dependency>
 ```
 
-## Quick start
+The SDK requires Java 11 or later.
 
-Set `OWLVIGIL_GATEWAY_KEY` for model calls. Model names are provider-facing
-names such as `deepseek-v4-flash`, not internal model IDs.
+## Run a Gateway request
+
+Set the Gateway Key in the server environment:
+
+```bash
+export OWLVIGIL_GATEWAY_KEY='your-gateway-key'
+```
+
+Then create and reuse one client:
 
 ```java
 import com.owlvigil.OwlVigilClient;
@@ -49,25 +48,40 @@ import com.owlvigil.gateway.Message;
 
 try (OwlVigilClient client = OwlVigilClient.builder().build()) {
     var response = client.gateway().createChatCompletion(
-        ChatCompletionRequest.builder()
-            .model("deepseek-v4-flash")
-            .message(Message.of("user", "Hello"))
-            .build());
+            ChatCompletionRequest.builder()
+                    .model("your-model-id")
+                    .message(Message.of("user", "Say hello from OwlVigil."))
+                    .build());
+
+    if (response.value().choices().isEmpty()) {
+        throw new IllegalStateException("empty response");
+    }
     System.out.println(response.value().choices().get(0).message().content());
+    System.out.println("request_id=" + response.meta().requestId());
 }
 ```
 
-`build()` does not require both credentials immediately. The SDK reads each
-credential when its API surface sends a request, so an application that only
-uses the Gateway needs only `OWLVIGIL_GATEWAY_KEY`.
+Use `client.gateway().listModels()` first to discover models available to the
+current Workspace and Gateway Key. Model names are provider-facing names, not
+internal model IDs.
 
-Use `OWLVIGIL_API_KEY` only for Management calls. Discover the workspace ID
-through `client.management().listWorkspaces()` before calling workspace-scoped
-methods. Never use the Management key as a Gateway key.
+## Run a Management request
+
+Set a separate Management API Key:
+
+```bash
+export OWLVIGIL_API_KEY='your-management-api-key'
+```
+
+List Workspaces before calling workspace-scoped methods:
 
 ```java
 try (OwlVigilClient client = OwlVigilClient.builder().build()) {
     var workspaces = client.management().listWorkspaces().value().items();
+    for (var workspace : workspaces) {
+        System.out.println(workspace.id() + " " + workspace.name());
+    }
+
     if (!workspaces.isEmpty()) {
         var workspace = workspaces.get(0);
         long workspaceId = workspace.workspaceId() > 0
@@ -79,40 +93,52 @@ try (OwlVigilClient client = OwlVigilClient.builder().build()) {
 }
 ```
 
-Streaming methods return an `SseStream`; always close it with
-try-with-resources. Requests support per-call timeout, retry, idempotency key,
-and safe custom headers through `RequestOptions`. Retries are conservative and
-limited to idempotent requests or requests carrying an idempotency key.
+Do not use the Management API Key as a Gateway Key.
 
 ## Configuration
 
 The builder defaults to the production endpoints, a 60-second timeout, two
-retries, and an `owlvigil-java/<SDK version>` user agent. Explicit builder
+retries, and an `owlvigil-java/<SDK version>` User-Agent. Explicit builder
 values take precedence over environment variables.
 
 ```java
-OwlVigilClient client = OwlVigilClient.builder()
-        .gatewayKey("replace-with-gateway-key")
-        .apiKey("replace-with-management-key")
+var client = OwlVigilClient.builder()
+        .gatewayKeyProvider(() -> secretManager.get("owlvigil/gateway-key"))
         .timeout(java.time.Duration.ofSeconds(30))
         .maxRetries(1)
         .build();
 ```
 
-Do not hard-code real credentials. Use environment variables or a
-`gatewayKeyProvider` / `apiKeyProvider` backed by your server-side secret
-manager.
+For staging, local tests, or private deployments, configure
+`gatewayBaseUrl`, `managementBaseUrl`, and `oauthBaseUrl`. Do not let
+ordinary end users control these URLs.
 
-## Development
+Streaming methods return a closeable, single-use `SseStream`. Per-request
+timeout, retry, idempotency key, Workspace ID, and safe custom headers are
+configured with `RequestOptions`.
+
+## Supported surfaces
+
+- Gateway models, Chat Completions, Responses, Embeddings, and Anthropic Messages
+- SSE streaming for Chat Completions and Responses
+- Workspace listing, usage summary, and request-log lookup
+- Typed Management operations in the development `0.3.0-SNAPSHOT`
+- OAuth2 authorization-code, refresh-token, and client-credentials flows
+- Webhook HMAC signing and verification
+
+The published `0.2.0` artifact does not include the additional typed
+Management operations from `0.3.0-SNAPSHOT`. See [CHANGELOG.md](CHANGELOG.md)
+and the [API reference](docs/en-US/10-reference-examples.md) before selecting
+a version.
+
+## Verify
 
 ```bash
 ./gradlew clean check jar sourcesJar javadocJar
 ```
 
-`check` includes the public API coverage gate. The full JaCoCo report is written
-to `build/reports/jacoco/test/html/index.html`.
-
-Live tests are opt-in and read-only:
+`check` includes the public API coverage gate. Live tests are opt-in and
+read-only:
 
 ```bash
 OWLVIGIL_LIVE_TEST=1 \
@@ -121,21 +147,14 @@ OWLVIGIL_API_KEY='replace-with-management-key' \
 ./gradlew test --rerun-tasks
 ```
 
-## Documentation
+The SDK is HTTP-only. It does not import Dashboard or backend code and does not
+connect directly to databases, Redis, queues, or provider infrastructure.
 
-- Developer guides: [English](docs/DEVELOPER_GUIDE.en-US.md) · [简体中文](docs/DEVELOPER_GUIDE.zh-CN.md)
-- [CHANGELOG.md](CHANGELOG.md)
+## Community and security
 
-## Contributing
-
-Contributions are welcome. Please read [CONTRIBUTING.md](CONTRIBUTING.md)
-before opening a pull request, and follow the
-[Code of Conduct](CODE_OF_CONDUCT.md).
-
-Report security vulnerabilities privately through the process in
-[SECURITY.md](SECURITY.md). For usage questions and bug reports, see
-[SUPPORT.md](SUPPORT.md).
-
-## License
+- Read [CONTRIBUTING.md](CONTRIBUTING.md) before opening a pull request.
+- Report vulnerabilities using [SECURITY.md](SECURITY.md).
+- See [SUPPORT.md](SUPPORT.md) for usage questions and bug reports.
+- Releases and compatibility changes are documented in [CHANGELOG.md](CHANGELOG.md).
 
 Licensed under the [MIT License](LICENSE).
