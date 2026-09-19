@@ -7,7 +7,7 @@
 Java 11+ SDK for OwlVigil Gateway model calls, Management API workflows,
 OAuth2, and Webhook signature verification.
 
-Documentation: [English](docs/en-US/README.md) | [简体中文](docs/zh-CN/README.md)
+Documentation: [here](docs/en-US/README.md)
 
 Gateway model calls use `https://gateway.owlvigil.com` with a Gateway Key.
 Management calls use `https://api.owlvigil.com/v1` with a scoped Management
