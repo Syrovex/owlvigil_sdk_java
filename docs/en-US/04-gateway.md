@@ -29,14 +29,13 @@ according to the current Gateway contract rather than guessing fields.
 
 ## Streaming
 
-**Version boundary:** the unreleased development source fixes delayed event
-delivery. Published Maven `0.2.0` reads one event ahead, so a complete delta,
-named error or terminal frame may wait for another event or EOF; a connection
-left open can time out before the application receives that frame. Use
-non-streaming calls or an independently tested direct HTTP SSE implementation
-on `0.2.0`, or deliberately build and validate the fixed development source.
-A request deadline bounds the wait but does not repair event delivery in the
-published artifact.
+**Version boundary:** `0.3.0` fixes delayed SSE event delivery. Version `0.2.0`
+reads one event ahead, so a complete delta, named error or terminal frame may
+wait for another event or EOF; a connection left open can time out before the
+application receives that frame. Upgrade to `0.3.0` for the corrected behavior.
+If you remain on `0.2.0`, use non-streaming calls or an independently tested
+direct HTTP SSE implementation. A longer request deadline does not repair
+event delivery in `0.2.0`.
 
 ```java
 try (var stream = client.gateway().createResponseStream("your-model-id",
@@ -55,7 +54,7 @@ try (var stream = client.gateway().createResponseStream("your-model-id",
 An `SseStream` can be consumed only once and must be closed. Output received before an
 interruption is partial output.
 
-In the fixed source, requesting an iterator does not read from the connection.
+Starting with `0.3.0`, requesting an iterator does not read from the connection.
 `hasNext()` reads at most the next complete event and caches it; repeated calls
 do not consume another event. `next()` returns that event without prefetching
 the following one. It also works without a preceding `hasNext()` call. An

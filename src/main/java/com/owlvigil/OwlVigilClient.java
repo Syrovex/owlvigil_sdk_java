@@ -13,7 +13,7 @@ import java.util.function.Supplier;
 import okhttp3.OkHttpClient;
 
 public final class OwlVigilClient implements AutoCloseable {
-    public static final String VERSION = "0.3.0-SNAPSHOT";
+    public static final String VERSION = "0.3.0";
     public static final String DEFAULT_GATEWAY_BASE_URL = "https://gateway.owlvigil.com";
     public static final String DEFAULT_MANAGEMENT_BASE_URL = "https://api.owlvigil.com/v1";
     public static final String DEFAULT_OAUTH_BASE_URL = "https://open.owlvigil.com";

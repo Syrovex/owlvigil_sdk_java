@@ -2,8 +2,9 @@
 
 ## Management overview
 
-`client.management()` handles control-plane operations such as Workspaces, usage, and request
-logs. It does not perform model inference.
+In `0.3.0`, `client.management()` exposes all 144 typed Management operations through its
+inherited `GeneratedManagementClient` methods, alongside the Workspace, usage, and request-log
+convenience helpers. It does not perform model inference.
 
 ### List Workspaces
 
@@ -30,6 +31,7 @@ var usage = client.management().getUsageSummary(workspaceId);
 var log = client.management().getRequestLog(workspaceId, requestId);
 ```
 
-Source `0.3.0-SNAPSHOT` also contains typed Management methods; they are not part of published
-`0.2.0`.
+The generated methods and their `ManagementModels` request and response types are available
+starting with `0.3.0`. Version `0.2.0` contains only the convenience helpers shown above.
+See the [API reference](10-reference-examples.md) for the generated method index.
 

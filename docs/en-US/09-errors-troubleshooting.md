@@ -29,11 +29,10 @@ before submitting again.
 
 ### Streaming waits after a complete event
 
-Maven `0.2.0` has a one-event prefetch defect: the application may not receive
+Version `0.2.0` has a one-event prefetch defect: the application may not receive
 a delta, error or terminal frame until another frame or EOF arrives. A timeout
-can therefore hide an already received terminal or error event. The fix is in
-unreleased development source, with regression tests that keep the HTTP
-connection open after flushing a complete frame. Increasing the timeout is not
-a fix. See [Streaming](04-gateway.md#streaming) for the version boundary and
-alternatives, and verify a fixed artifact is published before changing your
-dependency version.
+can therefore hide an already received terminal or error event. This is fixed
+in `0.3.0`, with regression tests that keep the HTTP connection open after
+flushing a complete frame. Increasing the timeout in `0.2.0` is not a fix.
+See [Streaming](04-gateway.md#streaming) for the upgrade behavior and alternatives
+when remaining on `0.2.0`.

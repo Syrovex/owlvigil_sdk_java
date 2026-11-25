@@ -8,7 +8,7 @@ plugins {
 }
 
 group = "com.owlvigil"
-version = providers.gradleProperty("version").getOrElse("0.3.0-SNAPSHOT")
+version = providers.gradleProperty("version").getOrElse("0.3.0")
 
 repositories {
     mavenCentral()
