@@ -1,7 +1,12 @@
 # Quickstart: Make Your First Model Call
 
-This chapter installs the Java SDK, configures authentication, and makes a
+This chapter targets Java SDK `0.3.0`, configures authentication, and makes a
 first Gateway request.
+
+**Publication pending:** `0.3.0` is currently a release candidate in this source
+branch. Wait for Maven Central publication before using the dependency
+declarations below. See [Versioning](README.md#versioning) for the differences
+from `0.2.0`.
 
 ## Prerequisites
 
@@ -19,14 +24,14 @@ Maven:
 <dependency>
   <groupId>com.owlvigil</groupId>
   <artifactId>owlvigil-java</artifactId>
-  <version>0.2.0</version>
+  <version>0.3.0</version>
 </dependency>
 ```
 
 Gradle Kotlin DSL:
 
 ```kotlin
-implementation("com.owlvigil:owlvigil-java:0.2.0")
+implementation("com.owlvigil:owlvigil-java:0.3.0")
 ```
 
 Set the credential:

@@ -7,6 +7,11 @@
 Java 11+ SDK for OwlVigil Gateway model calls, Management API workflows,
 OAuth2, and Webhook signature verification.
 
+**Release candidate:** this branch targets `0.3.0` and is awaiting Maven Central
+publication. The `0.3.0` dependency declarations below describe the intended
+release; wait for publication before expecting them to resolve. Version `0.2.0`
+remains affected by the streaming limitation described below.
+
 Documentation: [here](docs/en-US/README.md)
 
 Gateway model calls use `https://gateway.owlvigil.com` with a Gateway Key.
@@ -15,17 +20,18 @@ API Key. These credentials are not interchangeable.
 
 ## Install
 
-Add the published package from Maven Central:
+This guide targets `com.owlvigil:owlvigil-java:0.3.0`. Use the dependency
+coordinate for that version:
 
 ```kotlin
-implementation("com.owlvigil:owlvigil-java:0.2.0")
+implementation("com.owlvigil:owlvigil-java:0.3.0")
 ```
 
 ```xml
 <dependency>
   <groupId>com.owlvigil</groupId>
   <artifactId>owlvigil-java</artifactId>
-  <version>0.2.0</version>
+  <version>0.3.0</version>
 </dependency>
 ```
 
@@ -113,12 +119,11 @@ For staging, local tests, or private deployments, configure
 `gatewayBaseUrl`, `managementBaseUrl`, and `oauthBaseUrl`. Do not let
 ordinary end users control these URLs.
 
-Streaming methods return a closeable, single-use `SseStream`. The unreleased
-development source delivers each complete event without waiting for another
-event or EOF. Maven `0.2.0` still has a one-event prefetch defect that can delay
-deltas, errors and terminal frames on an open connection. See the
-[streaming guide](docs/en-US/04-gateway.md#streaming) for version-specific
-guidance; this source fix does not change the published artifact. Per-request
+Streaming methods return a closeable, single-use `SseStream`. Starting with
+`0.3.0`, each complete event is delivered without waiting for another event or
+EOF. Version `0.2.0` has a one-event prefetch defect that can delay deltas,
+errors and terminal frames on an open connection. See the
+[streaming guide](docs/en-US/04-gateway.md#streaming) for upgrade guidance. Per-request
 timeout, retry, idempotency key, Workspace ID, and safe custom headers are
 configured with `RequestOptions`.
 
@@ -127,14 +132,15 @@ configured with `RequestOptions`.
 - Gateway models, Chat Completions, Responses, Embeddings, and Anthropic Messages
 - SSE streaming for Chat Completions and Responses
 - Workspace listing, usage summary, and request-log lookup
-- Typed Management operations in the development `0.3.0-SNAPSHOT`
+- All 144 typed Management operations through `client.management()` in `0.3.0`
 - OAuth2 authorization-code, refresh-token, and client-credentials flows
 - Webhook HMAC signing and verification
 
-The published `0.2.0` artifact does not include the additional typed
-Management operations from `0.3.0-SNAPSHOT`. See [CHANGELOG.md](CHANGELOG.md)
-and the [API reference](docs/en-US/10-reference-examples.md) before selecting
-a version.
+Version `0.3.0` adds the complete typed Management catalog and its request and
+response models. Version `0.2.0` only includes the Workspace-listing,
+usage-summary, and request-log convenience helpers. See
+[CHANGELOG.md](CHANGELOG.md) and the
+[API reference](docs/en-US/10-reference-examples.md) when upgrading.
 
 ## Verify
 

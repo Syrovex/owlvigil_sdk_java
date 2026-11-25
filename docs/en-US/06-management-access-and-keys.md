@@ -8,8 +8,8 @@ server-provided role and permission catalogs before making changes; do not hard-
 The generated client provides typed methods such as
 `getWorkspacesWorkspaceIdMembers`, `postWorkspacesWorkspaceIdMembers`,
 `getWorkspacesWorkspaceIdRoles`, and
-`putWorkspacesWorkspaceIdMembersMemberIdPermissions`. These methods are part of
-`0.3.0-SNAPSHOT`; confirm the dependency version before using them.
+`putWorkspacesWorkspaceIdMembersMemberIdPermissions`. These methods are available through
+`client.management()` starting with `0.3.0`; they are not present in `0.2.0`.
 
 ## Gateway Key management
 

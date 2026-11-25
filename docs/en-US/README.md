@@ -1,7 +1,12 @@
 # OwlVigil Java SDK Documentation
 
 These guides follow the Go SDK chapter structure while using the Java SDK's actual public API.
-The current published artifact is `com.owlvigil:owlvigil-java:0.2.0` and requires Java 11 or later.
+These guides target `com.owlvigil:owlvigil-java:0.3.0` and require Java 11 or later.
+
+**Release candidate:** `0.3.0` is the source target for this branch and is awaiting Maven
+Central publication. Its dependency examples describe the intended release, not an artifact
+that is already available to download. Wait for publication before switching a registry
+dependency from `0.2.0` to `0.3.0`.
 
 ## Recommended path
 
@@ -29,7 +34,9 @@ the task at hand.
 
 ## Versioning
 
-Maven Central `0.2.0` is the current published version. Source `0.3.0-SNAPSHOT` adds typed
-Management methods and models that are not included in `0.2.0`. See
-[API reference](10-reference-examples.md) for the complete method index.
+Version `0.3.0` includes all 144 typed Management operations and their request and response
+models. It also fixes SSE event delivery so a complete event does not wait for the following
+event or EOF. Version `0.2.0` has only three Management convenience helpers and retains the
+SSE prefetch defect. See the [API reference](10-reference-examples.md) for the method index
+and [streaming guide](04-gateway.md#streaming) for the upgrade behavior.
 

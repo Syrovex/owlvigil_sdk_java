@@ -15,6 +15,7 @@ high-impact financial, payment, or billing operations.
 
 ## Typed Management API
 
-Source `0.3.0-SNAPSHOT` provides typed operations across the public Management contract through
-`GeneratedManagementClient`. Published `0.2.0` contains only the convenience methods described
-by the README and API reference. Do not copy source method names without checking your dependency version.
+Version `0.3.0` provides all 144 typed operations across the reviewed public Management contract
+through `GeneratedManagementClient`, inherited by `client.management()`. Version `0.2.0`
+contains only the Workspace-listing, usage-summary, and request-log convenience helpers.
+Use the `0.3.0` dependency when following these generated-method examples.
