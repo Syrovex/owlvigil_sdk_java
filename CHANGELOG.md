@@ -14,6 +14,10 @@ minor releases may include announced breaking changes.
 
 ### Fixed
 
+- Deliver each complete SSE event without reading the following event first.
+  On connections held open by the server, this prevents deltas, named errors
+  and terminal frames from waiting for another event or being masked by a
+  timeout. This fix is unreleased; Maven `0.2.0` remains affected.
 - `ApiResponse` construction for HTTP 204 responses (`value()` is now `null` instead of throwing).
 
 ## [0.2.0] - 2026-08-28

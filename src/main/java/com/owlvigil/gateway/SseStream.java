@@ -30,14 +30,22 @@ public final class SseStream implements AutoCloseable, Iterable<SseEvent> {
         if (consumed) throw new IllegalStateException("SSE stream can only be consumed once");
         consumed = true;
         return new Iterator<SseEvent>() {
-            private SseEvent next = readEvent();
+            private SseEvent next;
+            private boolean loaded;
 
-            @Override public boolean hasNext() { return next != null; }
+            @Override public boolean hasNext() {
+                if (!loaded) {
+                    next = readEvent();
+                    loaded = true;
+                }
+                return next != null;
+            }
 
             @Override public SseEvent next() {
-                if (next == null) throw new NoSuchElementException();
+                if (!hasNext()) throw new NoSuchElementException();
                 SseEvent current = next;
-                next = readEvent();
+                next = null;
+                loaded = false;
                 return current;
             }
         };
