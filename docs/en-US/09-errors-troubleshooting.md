@@ -26,3 +26,14 @@ Keep the SDK version, method, time, status, and request ID, but never authorizat
 sensitive bodies. Confirm that every `SseStream` is closed. For failed Webhook verification,
 check the raw body, headers, secret, and system clock. After a write timeout, read current state
 before submitting again.
+
+### Streaming waits after a complete event
+
+Maven `0.2.0` has a one-event prefetch defect: the application may not receive
+a delta, error or terminal frame until another frame or EOF arrives. A timeout
+can therefore hide an already received terminal or error event. The fix is in
+unreleased development source, with regression tests that keep the HTTP
+connection open after flushing a complete frame. Increasing the timeout is not
+a fix. See [Streaming](04-gateway.md#streaming) for the version boundary and
+alternatives, and verify a fixed artifact is published before changing your
+dependency version.

@@ -29,10 +29,24 @@ according to the current Gateway contract rather than guessing fields.
 
 ## Streaming
 
+**Version boundary:** the unreleased development source fixes delayed event
+delivery. Published Maven `0.2.0` reads one event ahead, so a complete delta,
+named error or terminal frame may wait for another event or EOF; a connection
+left open can time out before the application receives that frame. Use
+non-streaming calls or an independently tested direct HTTP SSE implementation
+on `0.2.0`, or deliberately build and validate the fixed development source.
+A request deadline bounds the wait but does not repair event delivery in the
+published artifact.
+
 ```java
 try (var stream = client.gateway().createResponseStream("your-model-id",
         new com.fasterxml.jackson.databind.ObjectMapper().getNodeFactory().textNode("Hello"))) {
     for (var event : stream) {
+        if ("error".equals(event.event())) {
+            throw new IllegalStateException("Gateway reported a streaming error");
+        }
+        if ("[DONE]".equals(event.data().trim())) break;
+        if (event.data().trim().isEmpty()) continue;
         System.out.println(event.event() + ": " + event.data());
     }
 }
@@ -40,4 +54,13 @@ try (var stream = client.gateway().createResponseStream("your-model-id",
 
 An `SseStream` can be consumed only once and must be closed. Output received before an
 interruption is partial output.
+
+In the fixed source, requesting an iterator does not read from the connection.
+`hasNext()` reads at most the next complete event and caches it; repeated calls
+do not consume another event. `next()` returns that event without prefetching
+the following one. It also works without a preceding `hasNext()` call. An
+attempt to read a new event can still block until data, EOF or the configured
+request deadline. The SDK exposes SSE frames as strings; applications own
+event-specific JSON parsing, terminal handling and error detection. Check named
+errors before empty or terminal data and close the stream on every exit.
 

@@ -113,7 +113,12 @@ For staging, local tests, or private deployments, configure
 `gatewayBaseUrl`, `managementBaseUrl`, and `oauthBaseUrl`. Do not let
 ordinary end users control these URLs.
 
-Streaming methods return a closeable, single-use `SseStream`. Per-request
+Streaming methods return a closeable, single-use `SseStream`. The unreleased
+development source delivers each complete event without waiting for another
+event or EOF. Maven `0.2.0` still has a one-event prefetch defect that can delay
+deltas, errors and terminal frames on an open connection. See the
+[streaming guide](docs/en-US/04-gateway.md#streaming) for version-specific
+guidance; this source fix does not change the published artifact. Per-request
 timeout, retry, idempotency key, Workspace ID, and safe custom headers are
 configured with `RequestOptions`.
 
